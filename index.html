@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>João Paulo de França | Criação de Sistemas</title>
+  <meta name="description" content="João Paulo de França, Técnico em Informática em Teresina/PI. Crio sites, painéis e sistemas que resolvem problemas reais de pequenos negócios." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+  <!-- Fundo animado -->
+  <div class="bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Navegação -->
+  <header class="nav" id="nav">
+    <a href="#inicio" class="logo">&lt;JoãoPaulo<span>/</span>&gt;</a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#skills">Serviços</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#contato" class="btn btn-small">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="badge reveal"><span class="pulse"></span> Disponível para novos projetos · Teresina/PI</p>
+          <h1 class="reveal">
+            Olá, eu sou <span class="gradient-text">João Paulo</span><br />
+            <span class="typed-wrap">Eu <span class="typed" id="typed"></span><span class="caret">|</span></span>
+          </h1>
+          <p class="hero-sub reveal">
+            Sou Técnico em Informática e transformo problemas do dia a dia em sistemas que funcionam:
+            consulta de preço, etiquetas, controle financeiro e apps para clientes. Do problema real
+            à solução pronta para usar.
+          </p>
+          <div class="hero-cta reveal">
+            <a href="#projetos" class="btn btn-primary">Ver projetos <span class="arrow">→</span></a>
+            <a href="https://wa.me/5586999872645?text=Ol%C3%A1%20Jo%C3%A3o%20Paulo!%20Vi%20seu%20portf%C3%B3lio." target="_blank" rel="noopener" class="btn btn-ghost">💬 Falar no WhatsApp</a>
+          </div>
+          <div class="socials reveal">
+            <a href="https://wa.me/5586999872645" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=joaopaulofrancamedeiros%40gmail.com&su=Contato%20pelo%20portf%C3%B3lio" target="_blank" rel="noopener" aria-label="E-mail">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.2-8 5-8-5V6l8 5 8-5v2.2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="code-card glass">
+            <div class="code-header">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="file">joaopaulo.js</span>
+            </div>
+<pre><code><span class="k">const</span> <span class="v">joaoPaulo</span> = {
+  <span class="p">cargo</span>: <span class="s">"Técnico em Informática"</span>,
+  <span class="p">cidade</span>: <span class="s">"Teresina/PI"</span>,
+  <span class="p">faz</span>: [<span class="s">"Sistemas"</span>, <span class="s">"Automação"</span>, <span class="s">"Suporte"</span>],
+  <span class="p">cafe</span>: <span class="n">Infinity</span>,
+  <span class="f">resolver</span>(<span class="v">problema</span>) {
+    <span class="k">const</span> <span class="v">sistema</span> = <span class="f">criar</span>(<span class="v">problema</span>);
+    <span class="k">return</span> <span class="v">sistema</span>.<span class="f">funcionando</span>(); <span class="c">// ✅</span>
+  }
+};</code></pre>
+          </div>
+          <div class="float-chip chip-1 glass">🧩 Sistemas</div>
+          <div class="float-chip chip-2 glass">⚡ Automação</div>
+          <div class="float-chip chip-3 glass">🛒 Varejo</div>
+        </div>
+      </div>
+      <a href="#sobre" class="scroll-down" aria-label="Rolar para baixo"><span></span></a>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">01 — Sobre mim</span>
+          <h2>Vi o problema, levei a ideia e <span class="gradient-text">criei a solução</span></h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              Quando entrei no Comercial União Sá, percebi coisas do dia a dia que podiam melhorar com
+              tecnologia. Em vez de esperar, levei as ideias ao meu patrão, ele aprovou, e eu desenvolvi
+              os sistemas. Hoje esses sistemas funcionam todos os dias no mercado.
+            </p>
+            <p>
+              Junto o conhecimento técnico com a vivência de quem trabalha no comércio e sabe onde estão
+              os problemas. Crio sites, painéis e sistemas para pequenos negócios, sempre com um objetivo:
+              economizar tempo, organizar dinheiro ou melhorar o atendimento.
+            </p>
+            <a href="#projetos" class="btn btn-ghost">Ver o que eu já fiz ↓</a>
+          </div>
+          <div class="stats">
+            <div class="stat glass reveal"><strong data-count="6">0</strong><span>projetos entregues</span></div>
+            <div class="stat glass reveal"><strong data-count="3">0</strong><span>clientes atendidos</span></div>
+            <div class="stat glass reveal"><strong data-count="3">0</strong><span>+ anos de experiência</span></div>
+            <div class="stat glass reveal"><strong data-count="3">0</strong><span>sistemas em uso todo dia no mercado</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">02 — O que eu faço</span>
+          <h2>Como eu posso <span class="gradient-text">te ajudar</span></h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card glass reveal">
+            <div class="skill-icon">🌐</div>
+            <h3>Sites e sistemas web</h3>
+            <p>Páginas, painéis e sistemas com login, banco de dados e relatórios.</p>
+            <ul class="tags"><li>Login</li><li>Banco de dados</li><li>Relatórios</li></ul>
+          </div>
+          <div class="skill-card glass reveal">
+            <div class="skill-icon">📊</div>
+            <h3>Planilhas e dashboards</h3>
+            <p>Excel e Google Planilhas com fórmulas, gráficos e controles financeiros.</p>
+            <ul class="tags"><li>Excel</li><li>Google Planilhas</li><li>Gráficos</li></ul>
+          </div>
+          <div class="skill-card glass reveal">
+            <div class="skill-icon">⚙️</div>
+            <h3>Automação</h3>
+            <p>Ferramentas que eliminam tarefas manuais repetitivas.</p>
+            <ul class="tags"><li>Processos</li><li>Código de barras</li><li>Impressão</li></ul>
+          </div>
+          <div class="skill-card glass reveal">
+            <div class="skill-icon">🛠️</div>
+            <h3>Suporte de TI</h3>
+            <p>Instalação e configuração de sistemas, manutenção de computadores e cadastro de usuários.</p>
+            <ul class="tags"><li>Instalação</li><li>Manutenção</li><li>Usuários</li></ul>
+          </div>
+          <div class="skill-card glass reveal">
+            <div class="skill-icon">🧾</div>
+            <h3>Rotina fiscal e estoque</h3>
+            <p>Entrada de notas fiscais, conferência de mercadorias e controle de estoque.</p>
+            <ul class="tags"><li>CST</li><li>NCM</li><li>ICMS</li><li>Estoque</li></ul>
+          </div>
+          <div class="skill-card glass reveal">
+            <div class="skill-icon">🤖</div>
+            <h3>IA no desenvolvimento</h3>
+            <p>Uso ferramentas de inteligência artificial para entregar soluções com mais rapidez.</p>
+            <ul class="tags"><li>Agilidade</li><li>Inovação</li></ul>
+          </div>
+          <div class="skill-card glass reveal">
+            <div class="skill-icon">🔐</div>
+            <h3>Segurança da Informação</h3>
+            <p>Boas práticas de acesso, senhas e proteção de dados.</p>
+            <ul class="tags"><li>Acesso</li><li>Senhas</li><li>Dados</li></ul>
+          </div>
+          <div class="skill-card glass reveal">
+            <div class="skill-icon">🤝</div>
+            <h3>Atendimento</h3>
+            <p>Experiência com atendimento ao público, presencial e por telefone.</p>
+            <ul class="tags"><li>Presencial</li><li>Telefone</li></ul>
+          </div>
+        </div>
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>Sistemas</span><span>✦</span><span>Automação</span><span>✦</span><span>Planilhas</span><span>✦</span><span>Dashboards</span><span>✦</span><span>Suporte de TI</span><span>✦</span><span>Varejo</span><span>✦</span>
+            <span>Sistemas</span><span>✦</span><span>Automação</span><span>✦</span><span>Planilhas</span><span>✦</span><span>Dashboards</span><span>✦</span><span>Suporte de TI</span><span>✦</span><span>Varejo</span><span>✦</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos -->
+    <section class="section" id="projetos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">03 — Projetos</span>
+          <h2>Coisas que eu <span class="gradient-text">construí</span></h2>
+        </div>
+        <div class="filters reveal">
+          <button class="filter active" data-filter="all">Todos</button>
+          <button class="filter" data-filter="varejo">Varejo</button>
+          <button class="filter" data-filter="financeiro">Financeiro</button>
+          <button class="filter" data-filter="saude">Saúde e fitness</button>
+        </div>
+        <!-- Preenchido pelo script.js (projetos do painel ou projects-data.js) -->
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Experiência -->
+    <section class="section" id="experiencia">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">04 — Experiência</span>
+          <h2>Minha <span class="gradient-text">jornada</span></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <span class="date">Jul 2025 — Atual</span>
+              <h3>Assistente Administrativo</h3>
+              <span class="company">Comercial União Sá</span>
+              <p>Suporte de informática, sistemas e usuários. Recebimento e conferência de mercadorias, controle de estoque e lançamento de notas fiscais. Criei as ferramentas digitais do mercado.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <span class="date">Fev 2024 — Dez 2025</span>
+              <h3>Estagiário</h3>
+              <span class="company">COT — Centro Ortopédico Teresina</span>
+              <p>Atendimento presencial e por telefone, organização de documentos e prontuários, agendamento de consultas e suporte administrativo.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <span class="date">Abr 2023 — Dez 2023</span>
+              <h3>Estagiário</h3>
+              <span class="company">Droga Lopes</span>
+              <p>Recebimento e conferência de mercadorias, controle de estoque e lançamento de notas no sistema PDV.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass">
+              <span class="date">Formação</span>
+              <h3>Técnico em Informática</h3>
+              <span class="company">CETI Desembargador Heli Sobral</span>
+              <p>Ensino médio integrado ao técnico. Cursos do Curso em Vídeo: Pacote Office (80h) e Segurança da Informação (30h).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="section" id="contato">
+      <div class="container">
+        <div class="contact glass reveal">
+          <div class="contact-text">
+            <span class="section-tag">05 — Contato</span>
+            <h2>Precisa de um sistema para o <span class="gradient-text">seu negócio?</span></h2>
+            <p>Ou tem uma vaga em que eu me encaixo? Me conta como funciona hoje e eu te mostro como pode ficar mais fácil.</p>
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="https://wa.me/5586999872645?text=Ol%C3%A1%20Jo%C3%A3o%20Paulo!%20Vi%20seu%20portf%C3%B3lio." target="_blank" rel="noopener">💬 WhatsApp</a>
+            </div>
+            <ul class="contact-info">
+              <li>📱 (86) 99987-2645</li>
+              <li>✉️ <a href="mailto:joaopaulofrancamedeiros@gmail.com" class="contact-mail" id="contactMail">joaopaulofrancamedeiros@gmail.com</a></li>
+              <li>📍 Teresina/PI</li>
+            </ul>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <div class="field">
+              <input type="text" id="name" required maxlength="120" placeholder=" " />
+              <label for="name">Seu nome</label>
+            </div>
+            <div class="field">
+              <input type="text" id="email" required maxlength="200" placeholder=" " />
+              <label for="email">Seu e-mail ou WhatsApp</label>
+            </div>
+            <div class="field">
+              <textarea id="message" rows="4" required maxlength="5000" placeholder=" "></textarea>
+              <label for="message">Mensagem</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar mensagem <span class="arrow">→</span></button>
+            <p class="form-status" id="formStatus" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Detalhes do projeto -->
+  <dialog class="project-modal glass" id="projectModal">
+    <button class="modal-close" id="projectModalClose" aria-label="Fechar">✕</button>
+    <div id="projectModalBody"></div>
+  </dialog>
+
+  <!-- Ampliar imagem -->
+  <dialog class="lightbox" id="lightbox"><img id="lightboxImg" alt="" /></dialog>
+
+  <footer class="footer">
+    <div>
+      <p>© <span id="year"></span> João Paulo de França — Feito com ☕ e muito código.</p>    </div>
+    <a href="#inicio" class="to-top" aria-label="Voltar ao topo">↑</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="tracker.js"></script>
+  <script src="projects-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

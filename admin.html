@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Painel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- ========== Aviso de configuração ========== -->
+  <section class="center-screen hidden" id="setupScreen">
+    <div class="login-card glass">
+      <div class="lock">⚙️</div>
+      <h1>Falta configurar</h1>
+      <p class="muted">Preencha o arquivo <code>config.js</code> com os dados do seu projeto Supabase. O passo a passo está em <code>COMO-CONFIGURAR.md</code>.</p>
+    </div>
+  </section>
+
+  <!-- ========== Login ========== -->
+  <section class="center-screen hidden" id="loginScreen">
+    <form class="login-card glass" id="loginForm">
+      <div class="lock">🔒</div>
+      <h1>Painel <span class="gradient-text">Admin</span></h1>
+      <p class="muted">Área restrita. Somente o dono do site.</p>
+      <div class="field">
+        <input type="email" id="loginEmail" required placeholder=" " autocomplete="username" />
+        <label for="loginEmail">E-mail</label>
+      </div>
+      <div class="field">
+        <input type="password" id="loginPass" required placeholder=" " autocomplete="current-password" />
+        <label for="loginPass">Senha</label>
+      </div>
+      <button class="btn btn-primary" type="submit">Entrar <span class="arrow">→</span></button>
+      <p class="form-error" id="loginError" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- ========== Painel ========== -->
+  <div class="app hidden" id="app">
+    <aside class="sidebar glass">
+      <a href="index.html" class="logo" target="_blank">João Paulo<span>.</span></a>
+      <nav class="side-nav">
+        <button class="side-link active" data-tab="overview">📈 <span>Visão geral</span></button>
+        <button class="side-link" data-tab="visits">👀 <span>Visitas</span></button>
+        <button class="side-link" data-tab="messages">💬 <span>Mensagens</span> <em class="pill hidden" id="unreadPill">0</em></button>
+        <button class="side-link" data-tab="projects">🧩 <span>Projetos</span></button>
+      </nav>
+      <div class="side-footer">
+        <span class="muted small" id="adminEmail"></span>
+        <button class="btn btn-ghost btn-sm" id="logoutBtn">Sair</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <h1 id="pageTitle">Visão geral</h1>
+        <div class="topbar-actions">
+          <select id="rangeSelect" class="select">
+            <option value="1">Hoje</option>
+            <option value="7">Últimos 7 dias</option>
+            <option value="30" selected>Últimos 30 dias</option>
+            <option value="90">Últimos 90 dias</option>
+            <option value="3650">Tudo</option>
+          </select>
+          <button class="btn btn-ghost btn-sm" id="refreshBtn">↻ Atualizar</button>
+        </div>
+      </header>
+
+      <!-- Visão geral -->
+      <section class="tab" id="tab-overview">
+        <div class="kpis">
+          <div class="kpi glass"><span>Visitas</span><strong id="kVisits">–</strong></div>
+          <div class="kpi glass"><span>Visitantes únicos</span><strong id="kUnique">–</strong></div>
+          <div class="kpi glass"><span>Tempo médio</span><strong id="kTime">–</strong></div>
+          <div class="kpi glass"><span>Mensagens novas</span><strong id="kMsgs">–</strong></div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-head"><h2>Visitas por dia</h2><span class="muted small" id="chartNote"></span></div>
+          <div class="chart" id="chart"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card glass"><h2>📍 Locais</h2><ul class="rank" id="rCities"></ul></div>
+          <div class="card glass"><h2>🔗 De onde vieram</h2><ul class="rank" id="rRefs"></ul></div>
+          <div class="card glass"><h2>📱 Dispositivos</h2><ul class="rank" id="rDevices"></ul></div>
+          <div class="card glass"><h2>🌐 Navegadores</h2><ul class="rank" id="rBrowsers"></ul></div>
+          <div class="card glass"><h2>👁️ Seções mais vistas</h2><ul class="rank" id="rSections"></ul></div>
+          <div class="card glass"><h2>🖱️ Cliques</h2><ul class="rank" id="rClicks"></ul></div>
+        </div>
+      </section>
+
+      <!-- Visitas -->
+      <section class="tab hidden" id="tab-visits">
+        <div class="toolbar">
+          <input type="search" id="visitSearch" class="input" placeholder="Buscar por cidade, país, navegador, IP..." />
+          <button class="btn btn-ghost btn-sm danger" id="clearVisitsBtn">🗑 Apagar visitas do período</button>
+        </div>
+        <div class="table-wrap glass">
+          <table class="table">
+            <thead>
+              <tr><th>Quando</th><th>Local</th><th>Dispositivo</th><th>Origem</th><th>Tempo</th><th>Visitante</th><th></th></tr>
+            </thead>
+            <tbody id="visitsBody"></tbody>
+          </table>
+          <p class="empty hidden" id="visitsEmpty">Nenhuma visita nesse período ainda.</p>
+        </div>
+      </section>
+
+      <!-- Mensagens -->
+      <section class="tab hidden" id="tab-messages">
+        <div class="messages" id="messagesList"></div>
+        <p class="empty hidden" id="messagesEmpty">Nenhuma mensagem por enquanto.</p>
+      </section>
+
+      <!-- Projetos -->
+      <section class="tab hidden" id="tab-projects">
+        <div class="toolbar">
+          <p class="muted">Os projetos publicados aparecem automaticamente no site.</p>
+          <button class="btn btn-primary btn-sm" id="newProjectBtn">+ Novo projeto</button>
+        </div>
+        <div class="project-list" id="projectList"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Detalhe da visita -->
+  <dialog class="modal glass" id="visitModal">
+    <div class="modal-head"><h2>Detalhes da visita</h2><button class="icon-btn" data-close>✕</button></div>
+    <div id="visitDetail"></div>
+  </dialog>
+
+  <!-- Formulário de projeto -->
+  <dialog class="modal glass" id="projectModal">
+    <form id="projectForm" method="dialog">
+      <div class="modal-head"><h2 id="projectFormTitle">Novo projeto</h2><button type="button" class="icon-btn" data-close>✕</button></div>
+      <input type="hidden" id="pId" />
+      <div class="form-grid">
+        <label class="lbl full">Título<input class="input" id="pTitle" required maxlength="80" /></label>
+        <label class="lbl full">Cliente (ex.: Comercial União Sá · Supermercado)<input class="input" id="pClient" maxlength="120" /></label>
+        <label class="lbl full">Descrição<textarea class="input" id="pDesc" rows="3" maxlength="600"></textarea></label>
+        <label class="lbl full">Funcionalidades (uma por linha)<textarea class="input" id="pFeat" rows="3"></textarea></label>
+        <label class="lbl full">Resultado (caixa verde)<input class="input" id="pImpact" maxlength="200" /></label>
+        <label class="lbl full">Imagem (ex.: img/consulta-tela-produto.jpg ou um link https://). Vazio = usa emoji e cores<input class="input" id="pImg" maxlength="300" /></label>
+        <label class="lbl full">Como foi (uma etapa por linha, ex.: O problema: texto…)<textarea class="input" id="pSteps" rows="4"></textarea></label>
+        <label class="lbl full">Galeria de fotos (uma por linha, ex.: img/foto.jpg | legenda)<textarea class="input" id="pGallery" rows="3"></textarea></label>
+        <label class="lbl">Emoji<input class="input" id="pEmoji" maxlength="4" value="🧩" /></label>
+        <label class="lbl">Categoria
+          <select class="input" id="pCat">
+            <option value="varejo">Varejo</option>
+            <option value="financeiro">Financeiro</option>
+            <option value="saude">Saúde e fitness</option>
+          </select>
+        </label>
+        <label class="lbl">Cor 1<input type="color" class="input color" id="pC1" value="#7c3aed" /></label>
+        <label class="lbl">Cor 2<input type="color" class="input color" id="pC2" value="#06b6d4" /></label>
+        <label class="lbl full">Tags (separadas por vírgula)<input class="input" id="pTags" placeholder="Estoque, Relatórios" /></label>
+        <label class="lbl">Link "Ver"<input class="input" id="pDemo" type="url" placeholder="https://..." /></label>
+        <label class="lbl">Link "Código"<input class="input" id="pCode" type="url" placeholder="https://..." /></label>
+        <label class="lbl">Ordem<input class="input" id="pOrder" type="number" value="0" /></label>
+        <label class="lbl check"><input type="checkbox" id="pPub" checked /> Publicado no site</label>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-close>Cancelar</button>
+        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

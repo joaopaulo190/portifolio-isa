@@ -1,0 +1,108 @@
+// =====================================================================
+//  Projetos padrão do site.
+//  Se houver projetos cadastrados no painel admin, eles substituem estes.
+//  gallery: "caminho da imagem | legenda"
+//  steps:   "Título: texto"
+// =====================================================================
+window.DEFAULT_PROJECTS = [
+  {
+    title: "Painel de Preços para TV",
+    client: "Comercial União Sá · Açougue",
+    category: "varejo",
+    image_url: "img/acougue-sistema.jpg",
+    description: "Painel para a televisão do açougue com os preços das carnes, as ofertas destacadas na própria lista e o mascote do mercado.",
+    features: ["Roda offline no computador ligado à TV", "Ofertas destacadas sem trocar de tela", "Identidade visual do mercado"],
+    impact: "Os clientes veem os preços de longe, e as ofertas chamam mais atenção.",
+    tags: ["HTML/CSS/JS", "Sinalização digital", "Offline"],
+    steps: [
+      "O problema: Quando entrei, o açougue não tinha televisão nem cartaz de preços. O açougueiro precisava falar o preço de cada carne para cada cliente.",
+      "A ideia: Levei ao meu patrão a proposta de colocar uma TV no açougue mostrando os preços. Ele aprovou.",
+      "A solução: Criei o sistema do zero, com a logo, as cores e o mascote do mercado. As ofertas aparecem em destaque na lista, e depois do horário a tela muda sozinha para \"Expediente encerrado\".",
+      "O resultado: O cliente vê os preços de longe, sem precisar perguntar, e o açougueiro fica livre para atender.",
+    ],
+    gallery: [
+      "img/acougue-sistema.jpg | Tela do painel: preços das carnes com a oferta em destaque",
+      "img/acougue-tv.jpg | Foto real: TV do açougue com a tela de expediente encerrado",
+      "img/acougue-ambiente.jpg | Foto real: TV instalada na parede do açougue",
+    ],
+  },
+  {
+    title: "Terminal de Consulta de Preço",
+    client: "Comercial União Sá · Supermercado",
+    category: "varejo",
+    image_url: "img/consulta-tela-produto.jpg",
+    description: "O cliente passa o produto no leitor de código de barras e vê na hora o nome e o preço. Quando ninguém está usando, a tela mostra propagandas do mercado.",
+    features: ["Funciona com o leitor Elgin Flash II", "Visual com a marca e as cores do mercado", "Propagandas automáticas na tela ociosa"],
+    impact: "Menos clientes perguntando preço no caixa e mais vendas com as propagandas.",
+    tags: ["HTML/CSS/JS", "Leitor de código de barras", "Varejo"],
+    steps: [
+      "O problema: Também não existia leitor de preço. O cliente não tinha como conferir o preço de um produto sozinho e precisava perguntar a um funcionário ou ir até o caixa.",
+      "A ideia: Propus ao meu patrão um terminal de consulta usando um computador e um leitor de código de barras. Ele aprovou.",
+      "A solução: Desenvolvi o sistema: o cliente passa o produto no leitor e vê na hora o nome e o preço, com o mascote do mercado. A tela mostra a data da última atualização dos preços.",
+      "O resultado: O cliente tem autonomia para conferir os preços, e a equipe recebe menos perguntas.",
+    ],
+    gallery: [
+      "img/consulta-tela-inicial.jpg | Tela inicial: “Consulte o preço aqui”",
+      "img/consulta-tela-produto.jpg | Produto consultado: nome e preço na hora, com o mascote",
+      "img/consulta-tela-produto2.jpg | Outro produto consultado",
+      "img/consulta-tela-nao-encontrado.jpg | Produto não encontrado: orienta o cliente a procurar um atendente",
+      "img/consulta-tela-manutencao.jpg | Tela de manutenção: “Voltamos já”",
+      "img/consulta-tela-produtos.jpg | Área de produtos: atualização de preços pelo PDF do inventário, cadastro e edição",
+      "img/consulta-produto.jpg | Foto real: terminal em uso no mercado",
+      "img/consulta-inicio.jpg | Foto real: tela inicial no monitor do mercado",
+    ],
+  },
+  {
+    title: "Gerador de Etiquetas de Gôndola",
+    client: "Comercial União Sá · Supermercado",
+    category: "varejo",
+    image_url: "img/etiquetas-tela-pequenas.jpg",
+    description: "Antes as etiquetas de preço eram feitas uma a uma no Canva. Criei uma ferramenta que gera as etiquetas com código de barras prontas para imprimir em folha A4.",
+    features: ["3 tamanhos (pequena, grande e extra grande) escolhidos por botão", "Código de barras gerado automaticamente", "Mesmo layout de antes, com o logo e as cores do mercado"],
+    impact: "Agiliza a produção de cerca de 40 folhas de etiquetas por dia.",
+    tags: ["HTML/CSS/JS", "Código de barras", "Automação"],
+    steps: [
+      "O problema: As etiquetas de preço da gôndola eram montadas uma a uma no Canva, com o código de barras gerado à parte. Eram cerca de 40 folhas por dia.",
+      "A solução: Criei uma ferramenta própria: busco o produto pelo nome ou pelo código, confiro o preço e ela gera a folha A4 pronta para imprimir, com o código de barras.",
+      "O resultado: Três tamanhos (pequena, grande e extra grande), o mesmo layout de antes e muito menos tempo gasto todos os dias.",
+    ],
+    gallery: [
+      "img/etiquetas-tela-inicial.jpg | Tela inicial: escolha do tamanho e busca de produtos",
+      "img/etiquetas-tela-pequenas.jpg | Etiquetas pequenas (perfumaria): 14 por folha",
+      "img/etiquetas-tela-grandes.jpg | Etiquetas grandes (biscoito, milho verde…): 16 por folha",
+      "img/etiquetas-tela-extragrandes.jpg | Etiquetas extra grandes (flocão, papel higiênico…): 6 por folha",
+      "img/etiquetas-tela-cadastro.jpg | Cadastro e atualização de produtos pelo PDF do inventário",
+      "img/etiquetas-sistema.jpg | Prévia das etiquetas prontas para imprimir em A4",
+    ],
+  },
+  {
+    title: "Sistema Financeiro Empresarial",
+    client: "Empresa confidencial · grupo com 3 empresas",
+    category: "financeiro",
+    emoji: "💼", color1: "#ff7a18", color2: "#ffb000",
+    description: "Sistema de contas a pagar para três empresas do mesmo grupo, com os valores separados por empresa e por conta bancária. Começou como planilha e virou um site com login.",
+    features: ["Status pago, a vencer e atrasado, com dias de atraso e juros", "Folha quinzenal, diárias e custo por colaborador", "Recibos padronizados, histórico de alterações e exportação para Excel", "Resumo semanal em imagem para os donos aprovarem os pagamentos"],
+    impact: "Os donos aprovam os pagamentos só olhando o resumo, sem precisar ler PDF.",
+    tags: ["Excel / Google Planilhas", "Web app", "Login", "Relatórios"],
+  },
+  {
+    title: "Diário de Treino + Anamnese",
+    client: "Isabela Medeiros · Personal Trainer",
+    category: "saude",
+    emoji: "💪", color1: "#0f3d33", color2: "#16a37f",
+    description: "App para os alunos de uma personal trainer. O aluno faz check-in no dia do treino, registra séries e cargas e acompanha a evolução em gráficos. Também tem um painel de anamnese ligado ao formulário de avaliação dos alunos.",
+    features: ["Login por e-mail e senha para cada aluno", "Banco de dados em nuvem (Firebase)", "Gráficos de intensidade e evolução de carga"],
+    impact: "A personal acompanha todos os alunos em um só lugar.",
+    tags: ["Firebase", "Autenticação", "Google Forms", "Gráficos"],
+  },
+  {
+    title: "Controle Financeiro Familiar",
+    client: "Projeto pessoal",
+    category: "financeiro",
+    emoji: "🏠", color1: "#2a1b6b", color2: "#5b3fd6",
+    description: "Começou como uma planilha e virou um site com login para organizar as finanças da família, com cartões, parcelas, metas e dinheiro emprestado.",
+    features: ["Cadastro de bancos e cartões, com limite", "Compras parceladas com data de vencimento da fatura", "Metas com quanto falta e dicas, além das contas a receber"],
+    impact: "Mostra para onde vai cada real e quanto falta para cada meta.",
+    tags: ["Web app", "Dashboard", "Login"],
+  },
+];
