@@ -1,0 +1,6 @@
+data/
+mobile/
+node_modules/
+.env
+*.md
+.git
